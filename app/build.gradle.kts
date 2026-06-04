@@ -23,6 +23,13 @@ android {
         targetSdk = 35
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            if (project.hasProperty("targetAbis")) {
+                val filters = project.property("targetAbis").toString().split(",")
+                abiFilters.addAll(filters)
+            }
+        }
     }
 
     buildTypes {

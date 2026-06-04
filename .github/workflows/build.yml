@@ -81,11 +81,11 @@ jobs:
 
       - name: Build Debug APK & Magisk Module
         run: |
-          ./gradlew --no-daemon :app:assembleDebug :app-unpriv:assembleDebug :app:assembleDebugMagiskModule -Pandroid.injected.build.abi=${{ matrix.arch.abi }}
+          ./gradlew --no-daemon :app:assembleDebug :app-unpriv:assembleDebug :app:assembleDebugMagiskModule -PtargetAbis=${{ matrix.arch.abi }}
 
       - name: Build Release APK & Magisk Module
         run: |
-          ./gradlew --no-daemon :app:assembleRelease :app-unpriv:assembleRelease :app:assembleReleaseMagiskModule -Pandroid.injected.build.abi=${{ matrix.arch.abi }}
+          ./gradlew --no-daemon :app:assembleRelease :app-unpriv:assembleRelease :app:assembleReleaseMagiskModule -PtargetAbis=${{ matrix.arch.abi }}
 
       - name: Organize Artifacts
         run: |

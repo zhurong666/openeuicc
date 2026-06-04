@@ -25,6 +25,13 @@ android {
         minSdk = 28
         targetSdk = 35
 
+        ndk {
+            if (project.hasProperty("targetAbis")) {
+                val filters = project.property("targetAbis").toString().split(",")
+                abiFilters.addAll(filters)
+            }
+        }
+
         emitAssetStatements("https://easyeuicc.org", "https://preview.easyeuicc.org")
     }
 

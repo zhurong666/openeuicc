@@ -13,6 +13,13 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
+        ndk {
+            if (project.hasProperty("targetAbis")) {
+                val filters = project.property("targetAbis").toString().split(",")
+                abiFilters.addAll(filters)
+            }
+        }
+
         externalNativeBuild {
             ndkBuild {
                 cFlags(
