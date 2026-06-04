@@ -69,14 +69,12 @@ jobs:
             keytool -genkeypair -v -keystore keystore.jks -alias openeuicc-key -keyalg RSA -keysize 2048 -validity 10000 -storepass tempStorePass123 -keypass tempStorePass123 -dname "CN=OpenEUICC, O=OpenEUICC, C=US"
             keytool -genkeypair -v -keystore keystore.jks -alias easyeuicc-key -keyalg RSA -keysize 2048 -validity 10000 -storepass tempStorePass123 -keypass tempStorePass123 -dname "CN=EasyEUICC, O=EasyEUICC, C=US"
             
-            cat <<EOF > keystore.properties
-            storePassword=tempStorePass123
-            keyPassword=tempStorePass123
-            keyAlias=openeuicc-key
-            unprivKeyPassword=tempStorePass123
-            unprivKeyAlias=easyeuicc-key
-            storeFile=../keystore.jks
-            EOF
+            echo "storePassword=tempStorePass123" > keystore.properties
+            echo "keyPassword=tempStorePass123" >> keystore.properties
+            echo "keyAlias=openeuicc-key" >> keystore.properties
+            echo "unprivKeyPassword=tempStorePass123" >> keystore.properties
+            echo "unprivKeyAlias=easyeuicc-key" >> keystore.properties
+            echo "storeFile=../keystore.jks" >> keystore.properties
           else
             echo "Using user keystore.properties. Fallback skipped."
           fi
